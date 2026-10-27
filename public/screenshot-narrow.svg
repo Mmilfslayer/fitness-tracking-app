@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="750" height="1334" viewBox="0 0 750 1334">
+  <rect width="750" height="1334" fill="#F2F2F7"/>
+  <rect x="20" y="40" width="710" height="1254" rx="24" fill="white"/>
+  <text x="375" y="180" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="40" font-weight="600" fill="#1D1D1F">Workout Tracker</text>
+  <text x="375" y="250" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="20" fill="#86868B">AI-powered workouts & nutrition</text>
+  <rect x="75" y="320" width="600" height="280" rx="20" fill="#F2F2F7"/>
+  <text x="375" y="420" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="24" fill="#86868B">Daily Routine</text>
+  <rect x="75" y="640" width="600" height="280" rx="20" fill="#F2F2F7"/>
+  <text x="375" y="740" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="24" fill="#86868B">Nutrition Log</text>
+  <rect x="75" y="960" width="600" height="280" rx="20" fill="#F2F2F7"/>
+  <text x="375" y="1060" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="24" fill="#86868B">Progress Charts</text>
+  <text x="375" y="1240" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="16" fill="#86868B">Screenshot for App Store</text>
+</svg>
