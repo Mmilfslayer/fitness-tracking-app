@@ -7,7 +7,6 @@ export default defineConfig({
     react(),
     VitePWA({
       registerType: 'autoUpdate',
-      includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'masked-icon.svg'],
       manifest: {
         name: 'Fitness Tracking App',
         short_name: 'FitnessApp',
@@ -26,15 +25,15 @@ export default defineConfig({
             purpose: 'any maskable'
           },
           {
-            src: 'pwa-512x512.png',
+            src: 'pwa-512x512.svg',
             sizes: '512x512',
-            type: 'image/png',
+            type: 'image/svg+xml',
             purpose: 'any maskable'
           },
           {
-            src: 'apple-touch-icon.png',
+            src: 'apple-touch-icon.svg',
             sizes: '180x180',
-            type: 'image/png',
+            type: 'image/svg+xml',
             purpose: 'apple touch icon'
           }
         ],
@@ -45,28 +44,28 @@ export default defineConfig({
             short_name: 'Workout',
             description: 'Start a new workout session',
             url: '/workout',
-            icons: [{ src: 'workout-icon.png', sizes: '192x192' }]
+            icons: [{ src: 'workout-icon.svg', sizes: '192x192', type: 'image/svg+xml' }]
           },
           {
             name: 'View Progress',
             short_name: 'Progress',
             description: 'View your fitness progress',
             url: '/progress',
-            icons: [{ src: 'progress-icon.png', sizes: '192x192' }]
+            icons: [{ src: 'progress-icon.svg', sizes: '192x192', type: 'image/svg+xml' }]
           }
         ],
         screenshots: [
           {
-            src: 'screenshot-wide.png',
+            src: 'screenshot-wide.svg',
             sizes: '1280x720',
-            type: 'image/png',
+            type: 'image/svg+xml',
             form_factor: 'wide',
             label: 'Fitness Dashboard'
           },
           {
-            src: 'screenshot-narrow.png',
+            src: 'screenshot-narrow.svg',
             sizes: '750x1334',
-            type: 'image/png',
+            type: 'image/svg+xml',
             form_factor: 'narrow',
             label: 'Workout Tracker'
           }
