@@ -15,6 +15,7 @@ const Workout = lazy(() => import('./pages/Workout').then(m => ({ default: m.Wor
 const Progress = lazy(() => import('./pages/Progress').then(m => ({ default: m.Progress })));
 const Settings = lazy(() => import('./pages/Settings').then(m => ({ default: m.Settings })));
 const Onboarding = lazy(() => import('./pages/Onboarding').then(m => ({ default: m.Onboarding })));
+const AppleDesignDemo = lazy(() => import('./pages/AppleDesignDemo').then(m => ({ default: m.AppleDesignDemo })));
 
 type TabId = 'nutrition' | 'workout' | 'progress' | 'settings';
 
@@ -95,10 +96,19 @@ function AppContent() {
                   <Settings />
                 </PageWrapper>
               )}
+              {/* Demo page - accessible via URL */}
+              {window.location.pathname === '/demo' && (
+                <PageWrapper key="demo" featureName="AppleDesignDemo">
+                  <AppleDesignDemo />
+                </PageWrapper>
+              )}
             </AnimatePresence>
           </main>
 
-          <TabBar activeTab={activeTab} onTabChange={setActiveTab} />
+          {/* Hide TabBar on demo page */}
+          {window.location.pathname !== '/demo' && (
+            <TabBar activeTab={activeTab} onTabChange={setActiveTab} />
+          )}
         </div>
       </ToastProvider>
     </OnlineStatusProvider>

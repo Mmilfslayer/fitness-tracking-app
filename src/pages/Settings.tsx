@@ -6,7 +6,7 @@ import Button from '@/components/ui/Button';
 import SegmentedControl from '@/components/ui/SegmentedControl';
 import { useToastHelpers } from '@/hooks/useToast';
 import { usePWAInstall } from '@/hooks/usePWAInstall';
-import { AlertTriangle, Download, Trash2, RefreshCw, Key, Smartphone, CheckCircle } from 'lucide-react';
+import { AlertTriangle, Download, Trash2, RefreshCw, Key, Smartphone, CheckCircle, Palette, Code2 } from 'lucide-react';
 
 export function Settings() {
   const { settings, saveSettings, isReady } = useSettings();
@@ -375,6 +375,24 @@ export function Settings() {
               App is already installed or install not available on this browser.
             </p>
           )}
+        </Card>
+
+        {/* Design System Demo */}
+        <Card className="p-4 space-y-4 border-system-blue/20">
+          <h3 className="font-medium text-system-foreground flex items-center gap-2">
+            <Palette className="w-5 h-5 text-system-blue" />
+            Apple Design System Demo
+          </h3>
+          <p className="text-sm text-system-muted-foreground">
+            Explore the fluid interface principles, spring animations, gestures, and materials implemented in this app.
+          </p>
+          <Button
+            variant="primary"
+            leftIcon={<Code2 className="w-4 h-4" />}
+            onClick={() => window.open('/demo', '_blank')}
+          >
+            Open Design Demo
+          </Button>
         </Card>
 
         {/* App Info */}
