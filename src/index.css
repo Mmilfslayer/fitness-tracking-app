@@ -243,13 +243,13 @@
     @apply inline-flex items-center justify-center gap-2 px-4 py-2.5
            text-base font-medium rounded-apple-md
            transition-all duration-apple-fast ease-apple-ease-out
-           focus:outline-none focus-visible:ring-2 focus-visible:ring-system-blue/50
+           focus:outline-none focus-visible:ring-2 focus-visible:ring-system-blue focus-visible:ring-opacity-50
            disabled:opacity-50 disabled:pointer-events-none;
   }
 
   .btn-primary {
     @apply btn bg-system-blue text-white
-           hover:bg-system-blue/90 active:bg-system-blue
+           hover:bg-system-blue hover:bg-opacity-90 active:bg-system-blue
            active:scale-[0.98];
   }
 
@@ -262,7 +262,7 @@
 
   .btn-destructive {
     @apply btn bg-system-red text-white
-           hover:bg-system-red/90 active:bg-system-red
+           hover:bg-system-red hover:bg-opacity-90 active:bg-system-red
            active:scale-[0.98];
   }
 
@@ -290,7 +290,7 @@
            text-label-primary placeholder-label-tertiary
            text-base
            transition-all duration-apple-fast
-           focus:outline-none focus:ring-2 focus:ring-system-blue/50
+           focus:outline-none focus:ring-2 focus:ring-system-blue focus:ring-opacity-50
            focus:border-transparent
            disabled:opacity-50 disabled:pointer-events-none;
   }
@@ -309,7 +309,7 @@
 
   .nav-bar {
     @apply fixed bottom-0 left-0 right-0
-           bg-secondary-system-background/80 backdrop-blur-apple-lg
+           bg-secondary-system-background bg-opacity-80 backdrop-blur-apple-lg
            border-t border-separator-non-opaque
            z-50;
   }
@@ -349,19 +349,19 @@
   }
 
   .badge-primary {
-    @apply badge bg-system-blue/15 text-system-blue;
+    @apply badge bg-system-blue bg-opacity-15 text-system-blue;
   }
 
   .badge-success {
-    @apply badge bg-system-green/15 text-system-green;
+    @apply badge bg-system-green bg-opacity-15 text-system-green;
   }
 
   .badge-warning {
-    @apply badge bg-system-yellow/15 text-system-yellow dark:text-system-yellow;
+    @apply badge bg-system-yellow bg-opacity-15 text-system-yellow;
   }
 
   .badge-error {
-    @apply badge bg-system-red/15 text-system-red;
+    @apply badge bg-system-red bg-opacity-15 text-system-red;
   }
 
   .divider {

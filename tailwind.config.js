@@ -4,86 +4,56 @@ export default {
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}"
   ],
-  darkMode: 'class',
   theme: {
     extend: {
       colors: {
-        // Apple System Colors - Light Mode
-        'system-blue': '#007AFF',
-        'system-green': '#34C759',
-        'system-indigo': '#5856D6',
-        'system-orange': '#FF9F0A',
-        'system-pink': '#FF2D55',
-        'system-purple': '#AF52DE',
-        'system-red': '#FF3B30',
-        'system-teal': '#5AC8FA',
-        'system-yellow': '#FFCC00',
-        'system-gray': '#8E8E93',
-        'system-gray2': '#AEAEB2',
-        'system-gray3': '#C7C7CC',
-        'system-gray4': '#D1D1D6',
-        'system-gray5': '#E5E5EA',
-        'system-gray6': '#F2F2F7',
+        // Map Tailwind color utilities to CSS variables
+        // These will resolve to the CSS variables defined in index.css
+        'system-blue': 'var(--system-blue)',
+        'system-green': 'var(--system-green)',
+        'system-indigo': 'var(--system-indigo)',
+        'system-orange': 'var(--system-orange)',
+        'system-pink': 'var(--system-pink)',
+        'system-purple': 'var(--system-purple)',
+        'system-red': 'var(--system-red)',
+        'system-teal': 'var(--system-teal)',
+        'system-yellow': 'var(--system-yellow)',
+        'system-gray': 'var(--system-gray)',
+        'system-gray2': 'var(--system-gray2)',
+        'system-gray3': 'var(--system-gray3)',
+        'system-gray4': 'var(--system-gray4)',
+        'system-gray5': 'var(--system-gray5)',
+        'system-gray6': 'var(--system-gray6)',
 
-        // Semantic Colors (adapt to dark mode)
-        'label-primary': '#000000',
-        'label-secondary': '#3C3C43',
-        'label-tertiary': '#3C3C4399',
-        'label-quaternary': '#3C3C434D',
+        // Semantic Colors (adapt to dark mode via CSS variables)
+        'label-primary': 'var(--label-primary)',
+        'label-secondary': 'var(--label-secondary)',
+        'label-tertiary': 'var(--label-tertiary)',
+        'label-quaternary': 'var(--label-quaternary)',
 
-        'fill-primary': '#0000001A',
-        'fill-secondary': '#0000000D',
-        'fill-tertiary': '#00000033',
-        'fill-quaternary': '#00000014',
+        'fill-primary': 'var(--fill-primary)',
+        'fill-secondary': 'var(--fill-secondary)',
+        'fill-tertiary': 'var(--fill-tertiary)',
+        'fill-quaternary': 'var(--fill-quaternary)',
 
-        'separator-opaque': '#C6C6C8',
-        'separator-non-opaque': '#3C3C434D',
+        'separator-opaque': 'var(--separator-opaque)',
+        'separator-non-opaque': 'var(--separator-non-opaque)',
 
-        'system-background': '#FFFFFF',
-        'secondary-system-background': '#F2F2F7',
-        'tertiary-system-background': '#FFFFFF',
-        'system-grouped-background': '#F2F2F7',
-        'secondary-system-grouped-background': '#FFFFFF',
-        'tertiary-system-grouped-background': '#F2F2F7',
+        'system-background': 'var(--system-background)',
+        'secondary-system-background': 'var(--secondary-system-background)',
+        'tertiary-system-background': 'var(--tertiary-system-background)',
+        'system-grouped-background': 'var(--system-grouped-background)',
+        'secondary-system-grouped-background': 'var(--secondary-system-grouped-background)',
+        'tertiary-system-grouped-background': 'var(--tertiary-system-grouped-background)',
 
-        // Dark Mode overrides
-        dark: {
-          'label-primary': '#FFFFFF',
-          'label-secondary': '#EBEBF5',
-          'label-tertiary': '#EBEBF599',
-          'label-quaternary': '#EBEBF54D',
+        // Semantic Status Colors
+        'success': 'var(--success)',
+        'warning': 'var(--warning)',
+        'error': 'var(--error)',
+        'info': 'var(--info)',
 
-          'fill-primary': '#FFFFFF1A',
-          'fill-secondary': '#FFFFFF0D',
-          'fill-tertiary': '#FFFFFF33',
-          'fill-quaternary': '#FFFFFF14',
-
-          'separator-opaque': '#38383A',
-          'separator-non-opaque': '#54545880',
-
-          'system-background': '#000000',
-          'secondary-system-background': '#1C1C1E',
-          'tertiary-system-background': '#2C2C2E',
-          'system-grouped-background': '#000000',
-          'secondary-system-grouped-background': '#1C1C1E',
-          'tertiary-system-grouped-background': '#2C2C2E',
-
-          'system-blue': '#0A84FF',
-          'system-green': '#30D158',
-          'system-indigo': '#5E5CE6',
-          'system-orange': '#FF9F0A',
-          'system-pink': '#FF375F',
-          'system-purple': '#BF5AF2',
-          'system-red': '#FF453A',
-          'system-teal': '#64D2FF',
-          'system-yellow': '#FFD60A',
-          'system-gray': '#8E8E93',
-          'system-gray2': '#636366',
-          'system-gray3': '#48484A',
-          'system-gray4': '#3A3A3C',
-          'system-gray5': '#2C2C2E',
-          'system-gray6': '#1C1C1E',
-        }
+        // Placeholder Text
+        'placeholder-text': 'var(--placeholder-text)',
       },
       fontFamily: {
         sans: [

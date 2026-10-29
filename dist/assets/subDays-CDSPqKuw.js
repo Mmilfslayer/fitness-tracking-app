@@ -1,0 +1,2 @@
+import{R as e,T as a}from"./index-vi6Rqej7.js";function n(r,t){const s=e(r);return isNaN(t)?a(r,NaN):(t&&s.setDate(s.getDate()+t),s)}function i(r,t){return n(r,-t)}export{i as s};
+//# sourceMappingURL=subDays-CDSPqKuw.js.map

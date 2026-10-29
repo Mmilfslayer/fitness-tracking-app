@@ -2,6 +2,7 @@ import { Suspense, lazy, useEffect, useState } from 'react';
 import { AnimatePresence } from 'framer-motion';
 import { OnlineStatusProvider } from '@/hooks/useOnlineStatus';
 import { ToastProvider } from '@/hooks/useToast';
+import { ThemeProvider } from '@/hooks/useTheme';
 import { OfflineBanner } from '@/components/ui/OfflineBanner';
 import { TabBar } from '@/components/ui/TabBar';
 import { ErrorBoundary } from '@/components/error/ErrorBoundary';
@@ -108,7 +109,9 @@ export default function App() {
   return (
     <AnimatePresence mode="wait">
       <Suspense fallback={<LoadingFallback />}>
-        <AppContent />
+        <ThemeProvider>
+          <AppContent />
+        </ThemeProvider>
       </Suspense>
     </AnimatePresence>
   );
