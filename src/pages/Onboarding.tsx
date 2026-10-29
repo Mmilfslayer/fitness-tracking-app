@@ -82,9 +82,20 @@ export function Onboarding() {
       const client = new GeminiClient({ apiKey: apiKey.trim() });
       await client.generateText('Test', undefined, { maxOutputTokens: 10 });
       setApiKeyValid(true);
+      success('Connected', 'API key validated successfully');
       return true;
     } catch (err) {
       if (err instanceof AIError) {
+        // Allow proceeding for network/connection issues - key might be valid
+        if (err.code === AIErrorCode.NETWORK_ERROR ||
+            err.code === AIErrorCode.TIMEOUT ||
+            err.code === AIErrorCode.CONNECTION_REFUSED ||
+            err.code === AIErrorCode.MODEL_UNAVAILABLE) {
+          warning('Connection Issue', 'Could not reach Google AI servers. Your key may still be valid - you can continue and fix this later in Settings.');
+          setApiKeyValid(true);
+          return true;
+        }
+
         if (err.code === AIErrorCode.API_KEY_INVALID || err.code === AIErrorCode.API_KEY_EXPIRED) {
           error('Invalid API Key', 'Please check your Gemini API key and try again');
         } else if (err.code === AIErrorCode.RATE_LIMIT_EXCEEDED) {
@@ -95,14 +106,17 @@ export function Onboarding() {
           error('Validation Failed', err.message);
         }
       } else {
-        error('Validation Failed', 'Unable to validate API key. Please check your connection.');
+        // Non-AIError (unexpected) - warn but allow proceeding
+        warning('Connection Issue', 'Could not validate API key due to an unexpected error. You can continue and verify in Settings later.');
+        setApiKeyValid(true);
+        return true;
       }
       setApiKeyValid(false);
       return false;
     } finally {
       setIsValidating(false);
     }
-  }, [error, warning]);
+  }, [error, warning, success]);
 
   const goNext = useCallback(async () => {
     if (currentStep === 'api-key' && !apiKeyValid && data.apiKey) {

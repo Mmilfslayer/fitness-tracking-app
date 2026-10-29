@@ -148,12 +148,20 @@ export class GeminiClient {
           responseMimeType: 'text/plain',
         };
 
-        const result = await this.model.generateContent({
-          contents: [{ role: 'user', parts: [{ text: fullPrompt }] }],
-          generationConfig: config,
-        });
+        // Add timeout to prevent hanging on network issues
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 15000);
 
-        return this.processTextResponse(result, startTime);
+        try {
+          const result = await this.model.generateContent({
+            contents: [{ role: 'user', parts: [{ text: fullPrompt }] }],
+            generationConfig: config,
+          });
+
+          return this.processTextResponse(result, startTime);
+        } finally {
+          clearTimeout(timeoutId);
+        }
       });
     });
   }
@@ -203,10 +211,33 @@ export class GeminiClient {
       }
     }
 
-    throw lastError ?? new AIError(
-      AIErrorCode.UNKNOWN_ERROR,
-      'Max retry attempts exceeded',
-      { fallbackAvailable: true }
+    // Always wrap final error as AIError
+    if (lastError instanceof AIError) {
+      throw lastError;
+    }
+
+    // Convert common Google SDK errors to AIError
+    const errorMessage = lastError?.message ?? 'Unknown error';
+    let code = AIErrorCode.UNKNOWN_ERROR;
+
+    if (errorMessage.includes('API key') || errorMessage.includes('authentication') || errorMessage.includes('401') || errorMessage.includes('403')) {
+      code = AIErrorCode.API_KEY_INVALID;
+    } else if (errorMessage.includes('quota') || errorMessage.includes('429')) {
+      code = AIErrorCode.RATE_LIMIT_EXCEEDED;
+    } else if (errorMessage.includes('network') || errorMessage.includes('fetch') || errorMessage.includes('connection') || errorMessage.includes('timeout') || errorMessage.includes('ECONNREFUSED') || errorMessage.includes('ENOTFOUND')) {
+      code = AIErrorCode.NETWORK_ERROR;
+    } else if (errorMessage.includes('model') || errorMessage.includes('unavailable') || errorMessage.includes('503')) {
+      code = AIErrorCode.MODEL_UNAVAILABLE;
+    }
+
+    throw new AIError(
+      code,
+      errorMessage,
+      {
+        fallbackAvailable: true,
+        originalError: lastError,
+        statusCode: lastError instanceof Response ? lastError.status : undefined,
+      }
     );
   }
 
